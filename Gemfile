@@ -10,7 +10,7 @@ gem "rails", "~> 7.0.0"
 gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.5.3"
+gem "sqlite3", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -43,10 +43,13 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use boostrap for the app
-gem 'bootstrap', '~> 5.0.0'
+# gem 'bootstrap', '~> 5.0.0'
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
+
+#fontawesome for rails
+gem "font-awesome-sass", "~> 6.4.2"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
