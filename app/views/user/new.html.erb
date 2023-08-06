@@ -2,7 +2,7 @@
 <h1 class="text-center">Sign up</h1>
 
 <div class="d-flex justify-content-center align-items-center">
-  <%= form_with model: @user, url: user_index_path, class: "row g-3 w-50" do |f|%>
+  <%= form_with model: @user, url: user_index_path, local: true, class: "row g-3 w-50" do |f|%>
     <%= render "shared/error_message", object: f.object %>
     <div class="col-md-6">
       <%= f.label "Name" ,class: "form-label"%>
@@ -19,12 +19,6 @@
     <div class="col-12">
       <%= f.label "Password confirmation", class: "form-label"%>
       <%= f.password_field :password_confirmation, class: "form-control"%>
-    </div>
-    <div class="col-12">
-      <div class="form-check">
-        <%= f.check_box :remember, class: "form-check-input" %>
-        <%= f.label "Remember me",class: "form-check-label"%>
-      </div>
     </div>
     <div class="col-12">
       <%= f.submit "Sign up", disable_with: 'Submiting...', class: "btn btn-primary" %>

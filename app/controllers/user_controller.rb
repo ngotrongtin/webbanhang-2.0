@@ -1,6 +1,7 @@
 class UserController < ApplicationController
     before_action :logged_user?, only: [:edit, :update]
     before_action :correct_user, only: [:edit, :update]
+    
     def new
         @user = User.new
     end
@@ -32,7 +33,7 @@ class UserController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:email, :name, :password, :password_confirmation)
+        params.require(:user).permit(:name,:email , :password, :password_confirmation)
     end
 
     def correct_user 
