@@ -16,8 +16,21 @@ module SessionHelper
         end
     end
 
+    def current_user?(user)
+        user && user == current_user
+    end
+
     def logged_user?
         !current_user.nil?
+    end
+
+    # if no user log in, redirect to root path
+    def logged_in_user 
+        unless logged_user?
+            flash[:warning] = "Please log in"
+            store_location
+            redirect_to log_in_path
+        end
     end
 
     # delete two cookies on the browser
@@ -45,4 +58,16 @@ module SessionHelper
         cookies.permanent.encrypted[:user_id] = user.id # store user_id on browser, and encrypted for safe
         cookies.permanent[:remember_token] = user.remember_token 
     end
+
+    # store the get request url when the user want to use some feature that need log in
+    def store_location 
+        session[:forwarding_url] = request.original_url if request.get?
+    end
+
+    # redirect to the session[:forwarding_url] or the given url
+    def redirect_back_or(default) # if dafault is an instance var, url will be the show of that var
+        redirect_to session[:forwarding_url] || default
+        session.delete(:forwarding_url)
+    end
+
 end

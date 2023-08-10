@@ -9,7 +9,7 @@ class SessionController < ApplicationController
       # if a user logged in and wanna log in again without remember, we gonna delete the cookies from previous
       params[:session][:remember_me] == '1' ? remember(user) : forget(user) 
       flash[:success] = "successfully log in"
-      redirect_to root_path
+      redirect_back_or root_path
     else 
       flash.now[:danger] = "email or password is wrong"
       render :new

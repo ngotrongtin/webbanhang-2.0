@@ -1,0 +1,14 @@
+<% provide(:title, "All users") %>
+<div>
+    <% @users.each do |user| %>
+        <div class="mb-3 d-flex align-items-center gap-2">
+            <div>
+                <p class="m-0"><%= user.name %></p>
+                <p class="m-0"><%= user.email %></p>
+            </div>
+            <%= render 'shared/admin_btn' , user: user%>
+        </div>
+        
+    <% end %>
+
+</div>

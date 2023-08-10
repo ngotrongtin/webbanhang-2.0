@@ -39,6 +39,11 @@ class User < ApplicationRecord
     def forget
         update_attribute(:remember_digest, nil)
     end
+
+    def main_admin?
+        self.email == "tigopro.1703@gmail.com"
+    end
+
     # private because these method is only available in this class
     private
         def downcase_email

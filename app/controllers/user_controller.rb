@@ -1,11 +1,15 @@
 class UserController < ApplicationController
-    before_action :logged_user?, only: [:edit, :update]
+    before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
     before_action :correct_user, only: [:edit, :update]
-    
+    before_action :main_admin, only: [:active_admin, :index, :destroy]
     def new
         @user = User.new
     end
 
+    def index 
+        @users = User.all 
+    end
+    
     def create
         @user = User.new(user_params)
         if @user.save
@@ -28,6 +32,25 @@ class UserController < ApplicationController
             redirect_to root_path
         else
             render :edit  
+        end
+    end
+
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        flash[:success] = "user destroyed"
+        redirect_to user_index_path
+    end
+
+    def active_admin
+        user = User.find(params[:id])
+        user.toggle!(:admin)
+        if user.admin?
+            flash[:success] = "Admin actived"
+            redirect_to user_index_path
+        else 
+            flash[:danger] = "Admin unactived"
+            redirect_to user_index_path
         end
     end
 
