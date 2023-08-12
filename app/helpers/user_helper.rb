@@ -2,7 +2,7 @@ module UserHelper
     def main_admin
         unless current_user.email == "tigopro.1703@gmail.com"
             flash[:danger] = "You don't have permit"
-            redirect_to user_index_path
+            redirect_to root_path
         end
     end
 

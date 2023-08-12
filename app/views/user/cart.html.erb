@@ -1,0 +1,7 @@
+<div class="container-fluid">
+    <div class="row">
+        <% @products.each do |p| %>
+            <%= render "shared/cart_product", product: p %>
+        <% end %>
+    </div>
+</div>

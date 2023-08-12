@@ -1,5 +1,7 @@
-<div>
-    <% @pds.each do |p| %>
-        <%= render "shared/product", product: p %>
-    <% end %>
+<div class="container-fluid">
+    <div class="row">
+        <% @pds.each do |p| %>
+            <%= render "shared/product", product: p %>
+        <% end %>
+    </div>
 </div>

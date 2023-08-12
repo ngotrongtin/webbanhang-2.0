@@ -7,9 +7,13 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav justify-content-between w-100">
           <div class="nav-item navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-            </li>
+            <%if logged_user? %>
+              <li class="nav-item">
+                <%= link_to cart_user_path(current_user) do %>
+                  <%= content_tag :i, '', class: 'fa-solid fa-cart-shopping' %>
+                <% end %>
+              </li>
+            <% end %>
           </div> 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown">Profile</a>
@@ -18,7 +22,7 @@
               <li><%= link_to "Login", log_in_path , class: "dropdown-item"%></li>
               <li><%= link_to "Sign up", new_user_path , class: "dropdown-item"%></li>
             <%else%>
-              <%if current_user.admin? %>
+              <%if current_user.main_admin? %>
                 <li><%= link_to "Users", user_index_path , class: "dropdown-item"%></li>
               <% end %>
               <li><%= link_to "Change profile", edit_user_path(current_user) , class: "dropdown-item"%></li>

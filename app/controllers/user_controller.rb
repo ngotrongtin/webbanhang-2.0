@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-    before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+    before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :cart, :bill]
     before_action :correct_user, only: [:edit, :update]
     before_action :main_admin, only: [:active_admin, :index, :destroy]
     def new
@@ -52,6 +52,13 @@ class UserController < ApplicationController
             flash[:danger] = "Admin unactived"
             redirect_to user_index_path
         end
+    end
+
+    def cart 
+        @products = current_user.products 
+    end
+
+    def bill 
     end
 
     private
