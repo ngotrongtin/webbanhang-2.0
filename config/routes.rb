@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   post "log_in", to: "session#create"
   delete "logout", to: "session#destroy"
   delete "cart_destroy/:pd_id", to: "product#cart_destroy", as: :cart_destroy
+  get "default", to: "static_page#not_found"
 end

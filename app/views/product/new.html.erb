@@ -1,2 +1,13 @@
-<h1>Product#new</h1>
-<p>Find me in app/views/product/new.html.erb</p>
+<% provide(:title, "Post product") %>
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <%= form_with model: @product, url: product_index_path, local: true , class: "row g-3 w-50" do |f| %>
+        <%= render 'shared/error_message', object: f.object %>
+        <%= f.label "Name" ,class: "form-label"%>
+        <%= f.text_field :name, class: "form-control" %>
+        <%= f.label "Price" ,class: "form-label"%>
+        <%= f.text_field :price, class: "form-control" %>
+        <%= f.label "Image",class: "form-label"%>
+        <%= f.file_field :img, class: "form-control" %>
+        <%= f.submit "Create", class: "btn btn-primary" %>
+    <% end %>
+</div>

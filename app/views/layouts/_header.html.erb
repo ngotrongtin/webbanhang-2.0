@@ -25,8 +25,11 @@
               <%if current_user.main_admin? %>
                 <li><%= link_to "Users", user_index_path , class: "dropdown-item"%></li>
               <% end %>
+              <% if current_user.admin? %>
+                <%= link_to "Create Product", new_product_path, class: "dropdown-item" %>
+              <% end %>
               <li><%= link_to "Change profile", edit_user_path(current_user) , class: "dropdown-item"%></li>
-              <li><%= link_to "Reset password", root_path , class: "dropdown-item"%></li>
+              <li><%= link_to "Reset password", default_path, class: "dropdown-item" %><li>
               <li><%= button_to "Log out", logout_path, method: :delete, class: "dropdown-item"%></li>
             <%end%>
             </ul>
