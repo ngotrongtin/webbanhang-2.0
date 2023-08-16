@@ -1,0 +1,10 @@
+<%= form_with url: feedback_index_path, local: true, class: "row g-3 w-50" do |f| %>
+    <%= f.hidden_field :product_id, value: product.id %>
+    <%if logged_user? %>
+    <%= f.hidden_field :reviewer_id, value: current_user.id %>
+    <%end%>
+    <%= f.label "Give some feedback" %>
+    <%= f.text_area :content %>
+    <%= f.submit "Send" %>
+<%end%>
+

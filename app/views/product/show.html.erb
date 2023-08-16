@@ -1,2 +1,7 @@
-<h1>Product#show</h1>
-<p>Find me in app/views/product/show.html.erb</p>
+<div class="d-flex justify-content-start">
+    <%= render "shared/product" , product: @product%>
+    <%= render "feedback/feedbacks" , product: @product%>
+</div>
+<div class="p-5">
+   <%= render "feedback/new_feedback", product: @product %>
+</div>

@@ -18,7 +18,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown">Profile</a>
             <ul class="dropdown-menu dropdown-menu-end">
-            <%unless logged_user? %>
+            <% unless logged_user? %>
               <li><%= link_to "Login", log_in_path , class: "dropdown-item"%></li>
               <li><%= link_to "Sign up", new_user_path , class: "dropdown-item"%></li>
             <%else%>

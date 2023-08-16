@@ -1,0 +1,5 @@
+<div class="p-4">
+    <% product.feed_backs.each do |p| %>
+        <p><%= p.reviewer.name %> : <%= p.content %></p>
+    <%end%>
+</div>

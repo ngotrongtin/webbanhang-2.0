@@ -14,7 +14,7 @@ User.create!(
     admin: true
 )
 
-55.times do |i|
+10.times do |i|
     Product.create!(
         name: "product#{i}",
         price: "30k"

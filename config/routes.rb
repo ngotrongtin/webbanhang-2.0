@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "static_page#home_page"   
   resources :product, except: [:index ] do 
     member do
-      post :cart, :bill
+      get :cart, :bill
     end
   end
   resources :user do 
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get :cart, :bill 
     end
   end
+  resources :feedback, only: [:create, :destroy]
   patch "admin/:id", to: "user#active_admin", as: :admin
   get "log_in", to: "session#new"
   post "log_in", to: "session#create"

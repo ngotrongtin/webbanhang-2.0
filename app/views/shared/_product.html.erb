@@ -8,8 +8,11 @@
         <p class="m-0">Product's name: <%= product.name %></p>
         <p class="m-0">Price: <%= product.price %></p>
     </div>
-    <div class="position-absolute top-50 start-50 translate-middle d-flex">
-        <%if current_user.admin? %>
+
+    <span class="corner text-decoration-none"><%= link_to "Detail", product, class: "text-decoration-none" %></span>
+
+    <div class="position-absolute top-50 start-50 z-2 translate-middle d-flex">
+        <%if current_user && current_user.admin? %>
             <%= link_to "Change", edit_product_path(product), class: "btn btn-primary" %>
             <%= button_to "Delete", product_path(product), method: :delete, class: "btn btn-danger"%>
         <%end%>

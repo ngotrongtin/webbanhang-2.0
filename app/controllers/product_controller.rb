@@ -46,7 +46,11 @@ class ProductController < ApplicationController
   end
 
   def show
-
+    if Product.exists?(id: params[:id])
+      @product = Product.find(params[:id])
+    else 
+      redirect_to root_path 
+    end
   end
 
   def destroy 
