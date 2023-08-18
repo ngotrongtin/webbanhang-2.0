@@ -8,4 +8,9 @@ class StaticPageController < ApplicationController
 
   def contact
   end
+
+  def search 
+    @pds = Product.where("name LIKE ? ",'%' + params[:q] + '%')
+    render :search
+  end
 end
