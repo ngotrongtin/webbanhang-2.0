@@ -17,6 +17,6 @@ User.create!(
 10.times do |i|
     Product.create!(
         name: "product#{i}",
-        price: "30k"
+        price: "300#{i}k"
     )
 end

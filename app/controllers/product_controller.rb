@@ -1,6 +1,7 @@
 class ProductController < ApplicationController
   before_action :logged_in_user, only: [:cart, :bill, :cart_destroy]
   before_action :admin, only: [:new, :edit, :destroy, :create, :update]
+
   def new
     @product = Product.new
   end
@@ -8,11 +9,11 @@ class ProductController < ApplicationController
   def create
     @product = Product.new(product_params)
     # @product.img.attach(params[:product][:img]) if params[:product][:img]
-    if @product.save 
+    if @product.save
       flash[:success] = "Product created!"
       redirect_to root_path
     else
-      render :new 
+      render :new
     end
   end
 
@@ -20,7 +21,7 @@ class ProductController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def update 
+  def update
     @product = Product.find(params[:id])
     if @product && @product.update(product_params)
       flash[:success] = "Product updated!"
@@ -30,41 +31,43 @@ class ProductController < ApplicationController
     end
   end
 
-  def cart 
+  def cart
     product = Product.find(params[:id])
     current_user.products << product unless current_user.products.include?(product)
     redirect_to root_path
   end
 
-  def bill 
+  def bill
   end
 
   def cart_destroy
-    cart = Cart.find_by(product_id: params[:pd_id], user_id: current_user.id )
-    cart.destroy if cart 
+    cart = Cart.find_by(product_id: params[:pd_id], user_id: current_user.id)
+    cart.destroy if cart
     redirect_to cart_user_path(current_user)
   end
 
   def show
     if Product.exists?(id: params[:id])
       @product = Product.find(params[:id])
-    else 
-      redirect_to root_path 
+    else
+      redirect_to root_path
     end
   end
 
-  def destroy 
+  def destroy
     product = Product.find(params[:id])
-    if product 
-      product.destroy 
+    if product
+      product.destroy
       flash[:warning] = "Product destroyed"
       redirect_to root_path
-    else  
+    else
       redirect_to root_path
     end
   end
-  private 
-  def product_params 
+
+  private
+
+  def product_params
     params.require(:product).permit(:name, :price, :img)
   end
 end

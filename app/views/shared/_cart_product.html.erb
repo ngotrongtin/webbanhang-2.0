@@ -1,6 +1,6 @@
 <div class="p-4 text-dark col-sm-3 m-0 position-relative">
     <% if product.img.attached? %>
-        <%= image_tag product.img ,class: "w-100 h-50"%>
+        <%= image_tag product.img, class: "w-100 h-50" %>
     <% else %>
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPUAAADOCAMAAADR0rQ5AAAArlBMVEUAAADFx8XKygDKAAAAysoAygDKAMoAAMoAAM/IyW7RygBNyq4AyhYGygbTANPKAMzKALIAAHrFx8qXAGwAytLU1tSrrKuvrwCvAAAAr68ArwCvAK8AAK/QAAAA0NBTVFMeHh5cXVy+wL6IiYiAgYATExPQ0tAlJSWUlpS0trRoaWhxcnE5OjktLi0VFhVERUSio6Li5OJ6e3qtrmBDr5cAr7avAJqDAF4AAGqam5qhDZgmAAACw0lEQVR4nO3Z6XKbMBiFYdE2jbtkaRPRNRUYkMGOY+yu3P+NFYkgK8nIHqcd3CbvyQ8szSfBg1gytoi25O2LJ8G8fPUsmPPXB8EcHT8P5eT0aTAXZ6PDUEZvxC5BjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUaNGjRo1atSoUT9c9cHxSTDDqONt+founG8fgvn+cUM+hfPjfTg/P4fzayc1IYSQR5VL5W9M5srkasMYW3C5bk9sh1p4k5q4ZpIWtix1PVe2YL6e0ZttiGSRvzGZyTbLeWhAm6WpaNbtVEqtpYxdR2mncE0li66s6HvmdoqZq4iy+wvukzyKzKJk474jLoskSUQVPI6pFkUbr6dIivasJe7yiGZ2Cj29bisd5cJXZ5VoC4rSnafx4OpVPvXVVbnlOBZZbpLe6Mwjr6G7Rcz6S17pdsgNdbe3supHDK8WdV3sor7+d7/0V/uu2qxl31ZSrKJbanMx7FUt0qXId1HbzOTtaVyMeuzdt0pO2oeBUmu1Nre11HtVT1Q9vqMuQyPS7lg3qA13oRbS3ddGrcpKr9d6YZ7h9V7VQjSVU5dZatLMQiNUbAtWteuZpKqJVOreXPXKFKi4f3dZtchjHb6vG2UnHeoFlulus/Oby7sWtr65lpNu0z/ly07duFM9ll0GW/Jie8nf2scQuyKEEPJf5c++D/8SzPnRxu/D+7/+Q5vuw+lFOGejcP79XwEe528fqFGjRo0aNWrUqFGjRo0aNWrUqFGjRo0aNWrUqFGjRo0aNWrUqFE/SPVvhIDwaL6vi4QAAAAASUVORK5CYII=" class="w-100">
     <% end %>
@@ -9,7 +9,7 @@
         <p class="m-0">Price: <%= product.price %></p>
     </div>
     <div class="position-absolute top-50 start-50 translate-middle d-flex">
-        <%= button_to "Delete", cart_destroy_path(product), method: :delete , class: "btn btn-primary"%>
-        <%= button_to "Buy", bill_product_path(product), class: "btn btn-success"%>
+        <%= button_to "Delete", cart_destroy_path(product), method: :delete, class: "btn btn-primary" %>
+        <%= button_to "Buy", bill_product_path(product), class: "btn btn-success" %>
     </div>
 </div>

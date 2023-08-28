@@ -43,12 +43,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_124706) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.bigint "user_id_id"
-    t.bigint "product_id_id"
+    t.bigint "user_id"
+    t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id_id"], name: "index_carts_on_product_id_id"
-    t.index ["user_id_id"], name: "index_carts_on_user_id_id"
+    t.index ["product_id"], name: "index_carts_on_product_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "feed_backs", force: :cascade do |t|
@@ -86,6 +86,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_124706) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "carts", "users", column: "product_id_id"
-  add_foreign_key "carts", "users", column: "user_id_id"
+  add_foreign_key "carts", "products"
+  add_foreign_key "carts", "users"
+  add_foreign_key "feed_backs", "products"
+  add_foreign_key "feed_backs", "users", column: "reviewer_id"
+  add_foreign_key "transactions", "products"
+  add_foreign_key "transactions", "users", column: "customer_id"
 end
