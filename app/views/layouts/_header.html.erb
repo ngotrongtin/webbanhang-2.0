@@ -6,15 +6,15 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav justify-content-between w-100">
-          <div class="nav-item navbar-nav">
+          
             <% if logged_user? %>
-              <li class="nav-item">
-                <%= link_to cart_user_path(current_user) do %>
-                  <%= content_tag :i, "", class: "fa-solid fa-cart-shopping" %>
+              <li class="nav-item d-flex flex-column justify-content-center align-item-center">
+                <%= link_to cart_user_path(current_user), class: "text-white" do %>
+                  <%= content_tag :i, "", class: "fa-solid fa-cart-shopping " %>
                 <% end %>
               </li>
             <% end %>
-          </div> 
+          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown">Profile</a>
             <ul class="dropdown-menu dropdown-menu-end">
