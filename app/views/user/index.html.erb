@@ -6,9 +6,10 @@
                 <p class="m-0"><%= user.name %></p>
                 <p class="m-0"><%= user.email %></p>
             </div>
-            <%= render "shared/admin_btn", user: user %>
+            <div class="d-flex w-25">
+                <%= render "shared/admin_btn", user: user %>       
+            </div>
         </div>
         
     <% end %>
-
 </div>

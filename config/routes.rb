@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root "static_page#home_page"  
+  get "auth/:provider/callback", to: 'omniauth_callbacks#google_oauth2'
+  get "auth/failure", to: redirect('/')
   get "contact", to: "static_page#contact"
   resources :product, except: [:index ] do 
     member do
@@ -11,10 +13,11 @@ Rails.application.routes.draw do
       get :cart, :bill 
     end
   end
+  
   resources :feedback, only: [:create, :destroy]
-  patch "admin/:id", to: "user#active_admin", as: :admin
+  post "admin/:id", to: "user#active_admin", as: :admin
   get "log_in", to: "session#new"
-  post "log_in", to: "session#create"
+  post "log_in", to: "session#create" 
   delete "logout", to: "session#destroy"
   delete "cart_destroy/:pd_id", to: "product#cart_destroy", as: :cart_destroy
   get "default", to: "static_page#not_found"

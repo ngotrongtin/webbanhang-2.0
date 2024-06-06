@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20, minimum: 1 }
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
-
+ 
   # Returns the hash digest of the given string.
   def User.digest(string) # User.digest or self.digest
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -44,6 +44,16 @@ class User < ApplicationRecord
     self.email == "tigopro.1703@gmail.com"
   end
 
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    token = User.new_token
+    where(provider: access_token[:provider], uid: access_token[:uid])
+            .first_or_create(name: "guest",
+                              email: data["email"],
+                              password: token,
+                              password_confirmation: token
+                            )
+  end
   # private because these method is only available in this class
   private
 

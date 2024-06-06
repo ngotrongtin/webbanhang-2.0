@@ -44,15 +44,14 @@ class UserController < ApplicationController
   end
 
   def active_admin
-    user = User.find(params[:id])
-    user.toggle!(:admin)
-    if user.admin?
+    @user = User.find(params[:id])
+    @user.toggle!(:admin)
+    if @user.admin?
       flash[:success] = "Admin actived"
-      redirect_to user_index_path
     else
       flash[:danger] = "Admin unactived"
-      redirect_to user_index_path
     end
+    redirect_to user_index_path
   end
 
   def cart
