@@ -49,6 +49,9 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0'
 # Use boostrap for the app
 # gem 'bootstrap', '~> 5.0.0'
 
+# stripe
+gem 'stripe' 
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
